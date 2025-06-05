@@ -6,11 +6,12 @@
 /*   By: fileonar <fileonar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:00:32 by fefo              #+#    #+#             */
-/*   Updated: 2025/06/05 20:16:31 by fileonar         ###   ########.fr       */
+/*   Updated: 2025/06/05 21:15:22 by fileonar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "contact.hpp"
+#include "phonebook.hpp"
 
 int Contact::set_first_name(string first_name)
 {
@@ -86,72 +87,88 @@ string Contact::get_darkest_secret() const
     return darkest_secret;
 }
 
+int add_contact(Contact contact, string input, int phonebok_size)
+{
+	while (1)
+	{
+		cout << "Enter first name: ";
+		getline(cin, input);
+		if (contact.set_first_name(input) == 1)
+		{
+			cout << "Invalid first name. Please try again." << endl;
+			continue ;
+		}
+		cout << "First name: " << input << endl;
+		cout << "Enter last name: ";
+		getline(cin, input);
+		if (contact.set_last_name(input) == 1)
+		{
+			cout << "Invalid last name. Please try again." << endl;
+			continue ;
+		}
+		cout << "Last name: " << input << endl;
+		cout << "Enter nickname: ";
+		getline(cin, input);
+		if (contact.set_nickname(input) == 1)
+		{
+			cout << "Invalid nickname. Please try again." << endl;
+			continue ;
+		}
+		cout << "Nickname: " << input << endl;
+		cout << "Enter phone number: ";
+		getline(cin, input);
+		if (contact.set_phone_number(input) == 1)
+		{
+			cout << "Invalid phone number. Please try again." << endl;
+			continue ;
+		}
+		cout << "Phone number: " << input << endl;
+		cout << "Enter darkest secret: ";
+		getline(cin, input);
+		contact.set_darkest_secret(input);
+		cout << "Darkest secret: " << input << endl;
+		cout << "Contact added successfully!" << endl;
+		break ;
+	}
+	return (0);
+}
+
 int main(int argc, char **argv)
 {
     if (argc == 1)
-        return (cout << "Usage: " << argv[0] << " <command>" << endl, 1);
-
-    while (1)
-    {
-        if (std::string(argv[1]) == "ADD")
-        {
-            Contact contact;
-            string input;
-
-            cout << "Enter first name: ";
-            getline(cin, input);
-            if (contact.set_first_name(input) == 1)
+	{
+		Contact	contact;
+		string	input;
+		int		phonebook_size;
+		
+		phonebook_size = 0;
+		while (1)
+		{
+			cout << "Commands: \"" << "ADD, SEARCH or EXIT\"" << endl;
+			cout << "Enter command: ";
+			getline(cin, input);
+			if (input == "ADD")
 			{
-				cout << "Invalid first name. Please try again." << endl;
-				continue;
+				add_contact(contact, input, phonebook_size);
+				phonebook_size++;
+				cout << "phonebook size: " << phonebook_size << endl;
+				continue ;
 			}
-			cout << "First name: " << input << endl;
-            cout << "Enter last name: ";
-            getline(cin, input);
-            if (contact.set_last_name(input) == 1)
+			else if (input == "SEARCH")
 			{
-				cout << "Invalid last name. Please try again." << endl;
-				continue;
+				search(contact, input);
 			}
-			cout << "Last name: " << input << endl;
-            cout << "Enter nickname: ";
-            getline(cin, input);
-           if ( contact.set_nickname(input) == 1)
-		   {
-				cout << "Invalid nickname. Please try again." << endl;
-				continue;
-		   }
-			cout << "Nickname: " << input << endl;
-            cout << "Enter phone number: ";
-            getline(cin, input);
-			if (contact.set_phone_number(input) == 1)
+			else if (input == "EXIT")
 			{
-				cout << "Invalid phone number. Please try again." << endl;
-				continue;
+				break ;
 			}
-			cout << "Phone number: " << input << endl;
-            cout << "Enter darkest secret: ";
-            getline(cin, input);
-            contact.set_darkest_secret(input);
-			cout << "Darkest secret: " << input << endl;
-            cout << "Contact added successfully!" << endl;
-            break;
-        }
-        else if (std::string(argv[1]) == "SEARCH")
-        {
-            std::cout << "SEARCH" << endl;
-			break ;
-			 // Add a new contact
-        }
-        else if (std::string(argv[1]) == "EXIT")
-        {
-            break;
-        }
-        else
-        {
-            cout << "Invalid command. Please try again." << endl;
-			break ;
-        }
-    }
-    return (0);
+			else
+			{
+				cout << "Invalid command. Try again." << endl;
+				continue ;
+			}
+			return (0);
+		}
+	}
+	return (1);
 }
