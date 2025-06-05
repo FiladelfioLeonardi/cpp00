@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fefo <fefo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fileonar <fileonar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:11:01 by fefo              #+#    #+#             */
-/*   Updated: 2025/05/26 01:35:14 by fefo             ###   ########.fr       */
+/*   Updated: 2025/06/05 20:14:58 by fileonar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <string>
+#include <cctype>
 
 using namespace std;
 class Contact
@@ -22,10 +23,10 @@ class Contact
     public:
         // Contact();
         // ~Contact();
-        void set_first_name(string first_name);
-        void set_last_name(string last_name);
-        void set_nickname(string nickname);
-        void set_phone_number(string phone_number);
+        int set_first_name(string first_name);
+        int set_last_name(string last_name);
+        int set_nickname(string nickname);
+        int set_phone_number(string phone_number);
         void set_darkest_secret(string darkest_secret);
         string get_first_name() const;
         string get_last_name() const;
