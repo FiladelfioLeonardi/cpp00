@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fefo <fefo@student.42.fr>                  +#+  +:+       +#+         #
+#    By: fileonar <fileonar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/21 13:24:16 by fefo              #+#    #+#              #
-#    Updated: 2025/05/21 13:28:13 by fefo             ###   ########.fr        #
+#    Updated: 2025/06/05 18:38:24 by fileonar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,14 @@ SRCS =	contact.cpp \
 
 HEADERS = contact.hpp \
 		# PhoneBook.hpp
-
+OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
-$(NAME): $(SRCS) $(HEADERS)
-	$(CC) $(FLAGS) -o $(NAME) $(SRCS)
+$(NAME): $(OBJS) $(HEADERS)
+	$(CC) $(FLAGS) -o $(NAME) $(OBJS)
 
 clean:
-	rm -f $(SRCS)
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
