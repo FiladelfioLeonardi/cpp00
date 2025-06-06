@@ -6,7 +6,7 @@
 /*   By: fileonar <fileonar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:00:32 by fefo              #+#    #+#             */
-/*   Updated: 2025/06/05 21:15:22 by fileonar         ###   ########.fr       */
+/*   Updated: 2025/06/06 16:11:50 by fileonar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,19 @@ void Contact::set_darkest_secret(string darkest_secret)
     this->darkest_secret = darkest_secret;
 }
 
+int Contact::set_phonebook_size(int phonebook_size)
+{
+	if (phonebook_size < 0 || phonebook_size > 8)
+		phonebook_size++;
+	else if (phonebook_size > 8)
+	{
+		cout << "Phonebook is full. Cannot add more contacts." << endl;
+		return (1);
+	}
+	return (phonebook_size);
+}
+	
+
 string Contact::get_first_name() const
 {
     return first_name;
@@ -87,7 +100,12 @@ string Contact::get_darkest_secret() const
     return darkest_secret;
 }
 
-int add_contact(Contact contact, string input, int phonebok_size)
+int Contact::get_phonebook_size() const
+{
+	return (0);
+}
+
+int add_contact(Contact contact, string input)
 {
 	while (1)
 	{
@@ -98,7 +116,7 @@ int add_contact(Contact contact, string input, int phonebok_size)
 			cout << "Invalid first name. Please try again." << endl;
 			continue ;
 		}
-		cout << "First name: " << input << endl;
+		cout << "First name: " << contact.get_first_name() << endl;
 		cout << "Enter last name: ";
 		getline(cin, input);
 		if (contact.set_last_name(input) == 1)
@@ -130,6 +148,7 @@ int add_contact(Contact contact, string input, int phonebok_size)
 		cout << "Contact added successfully!" << endl;
 		break ;
 	}
+	contact.set_phonebook_size(contact.get_phonebook_size() + 1);
 	return (0);
 }
 
@@ -139,9 +158,8 @@ int main(int argc, char **argv)
 	{
 		Contact	contact;
 		string	input;
-		int		phonebook_size;
 		
-		phonebook_size = 0;
+		contact.set_phonebook_size(0);
 		while (1)
 		{
 			cout << "Commands: \"" << "ADD, SEARCH or EXIT\"" << endl;
@@ -149,9 +167,7 @@ int main(int argc, char **argv)
 			getline(cin, input);
 			if (input == "ADD")
 			{
-				add_contact(contact, input, phonebook_size);
-				phonebook_size++;
-				cout << "phonebook size: " << phonebook_size << endl;
+				add_contact(contact, input);
 				continue ;
 			}
 			else if (input == "SEARCH")
