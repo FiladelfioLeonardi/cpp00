@@ -6,7 +6,7 @@
 /*   By: fileonar <fileonar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:00:32 by fefo              #+#    #+#             */
-/*   Updated: 2025/07/21 12:22:53 by fileonar         ###   ########.fr       */
+/*   Updated: 2025/07/21 12:52:40 by fileonar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,22 +121,13 @@ int main()
 		getline(std::cin, input);
 
 		if (input == "ADD")
-		{
 			phonebook.add_contact();
-		}
 		else if (input == "SEARCH")
-		{
 			phonebook.search_contacts();
-		}
 		else if (input == "EXIT")
-		{
 			break;
-		}
 		else
-		{
 			std::cout << "Invalid command. Try again." << std::endl;
-		}
 	}
-
 	return 0;
 	}

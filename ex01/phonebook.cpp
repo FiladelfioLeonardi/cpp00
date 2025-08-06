@@ -6,7 +6,7 @@
 /*   By: fileonar <fileonar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 20:46:23 by fileonar          #+#    #+#             */
-/*   Updated: 2025/07/21 12:20:18 by fileonar         ###   ########.fr       */
+/*   Updated: 2025/08/06 16:56:34 by fileonar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void Phonebook::add_contact()
 	getline(std::cin, input);
 	while (contact.set_first_name(input))
 	{
-		std::cout << "Invalid first name. Please try again: ";
+		std::cout << "Invalid first name. Please try again." << std::endl;
+		std::cout << "Enter first name: ";
 		getline(std::cin, input);
 	}
 
@@ -37,7 +38,8 @@ void Phonebook::add_contact()
 	getline(std::cin, input);
 	while (contact.set_last_name(input))
 	{
-		std::cout << "Invalid last name. Please try again: ";
+		std::cout << "Invalid last name. Please try again." << std::endl;
+		std::cout << "Enter last name: ";
 		getline(std::cin, input);
 	}
 
@@ -45,7 +47,8 @@ void Phonebook::add_contact()
 	getline(std::cin, input);
 	while (contact.set_nickname(input))
 	{
-		std::cout << "Invalid nickname. Please try again: ";
+		std::cout << "Invalid nickname. Please try again." << std::endl;
+		std::cout << "Enter nickname: ";
 		getline(std::cin, input);
 	}
 
@@ -53,20 +56,20 @@ void Phonebook::add_contact()
 	getline(std::cin, input);
 	while (contact.set_phone_number(input))
 	{
-		std::cout << "Invalid phone number. Please try again: ";
+		std::cout << "Invalid phone number. Please try again." << std::endl;
+		std::cout << "Enter phone number: ";
 		getline(std::cin, input);
 	}
 
 	std::cout << "Enter darkest secret: ";
 	getline(std::cin, input);
 	contact.set_darkest_secret(input);
-
 	std::cout << "Contact added successfully!" << std::endl;
 	contact_count++;
-	}
+}
 
-	void Phonebook::search_contacts() const
-	{
+void Phonebook::search_contacts() const
+{
 	if (contact_count == 0)
 	{
 		std::cout << "Phonebook is empty." << std::endl;
@@ -116,7 +119,7 @@ void Phonebook::add_contact()
 	std::cout << "Nickname: " << contact.get_nickname() << std::endl;
 	std::cout << "Phone Number: " << contact.get_phone_number() << std::endl;
 	std::cout << "Darkest Secret: " << contact.get_darkest_secret() << std::endl;
-	}
+}
 
 void search(Contact *contact, std::string input)
 {
