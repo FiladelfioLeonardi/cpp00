@@ -12,7 +12,7 @@
 
 NAME = contact
 
-CC = clang++
+CC = g++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 SRCS =	contact.cpp \
@@ -28,7 +28,7 @@ OBJS = $(SRCS:%.cpp=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(LIB) -o $@ $^
+	$(CC) $(FLAGS) $(LIB) -o $@ $^
 
 clean:
 	@rm -f $(OBJS)
