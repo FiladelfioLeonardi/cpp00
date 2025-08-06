@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fefo <fefo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: fileonar <fileonar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 12:18:18 by fefo              #+#    #+#             */
-/*   Updated: 2025/05/21 12:21:16 by fefo             ###   ########.fr       */
+/*   Updated: 2025/08/06 17:47:12 by fileonar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int main(int argc, char **argv)
             for (int j = 0; argv[i][j]; j++)
                 std::cout << (char)toupper(argv[i][j]);
         }
+		std::cout << std::endl;
     }
 }
