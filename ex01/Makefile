@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fileonar <fileonar@student.42.fr>          +#+  +:+       +#+         #
+#    By: fefo <fefo@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/21 13:24:16 by fefo              #+#    #+#              #
-#    Updated: 2025/08/06 17:26:46 by fileonar         ###   ########.fr        #
+#    Updated: 2025/08/08 12:59:55 by fefo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++17 -g
 
 SRCS =	contact.cpp \
-		phonebook.cpp
+		phonebook.cpp \
+		main.cpp
 
 HEADERS = contact.hpp \
 		phonebook.hpp
@@ -29,6 +30,9 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(LIB) -o $@ $^
+
+%.o: %.cpp
+	$(CC) $(FLAGS) $(LIB) -c $< -o $@
 
 clean:
 	@rm -f $(OBJS)

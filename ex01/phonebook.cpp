@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fileonar <fileonar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fefo <fefo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 20:46:23 by fileonar          #+#    #+#             */
-/*   Updated: 2025/08/06 17:44:50 by fileonar         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:41:12 by fefo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void Phonebook::add_contact()
 	if (contact_count >= 8)
 	{
 		std::cout << "Phonebook is full. Overwriting the oldest contact." << std::endl;
-		contact_count = 7; // Overwrite the oldest contact
 	}
 
 	Contact &contact = contacts[contact_count % 8];
@@ -76,13 +75,15 @@ void Phonebook::search_contacts() const
 		return;
 	}
 
+	int display_count = (contact_count < 8) ? contact_count : 8;
+
 	std::cout << "|" << std::setw(10) << "Index"
 				<< "|" << std::setw(10) << "First Name"
 				<< "|" << std::setw(10) << "Last Name"
 				<< "|" << std::setw(10) << "Nickname"
 				<< "|" << std::endl;
 
-	for (int i = 0; i < contact_count && i < 8; i++)
+	for (int i = 0; i < display_count; i++)
 	{
 		const Contact &contact = contacts[i];
 		std::cout << "|" << std::setw(10) << i
@@ -107,7 +108,7 @@ void Phonebook::search_contacts() const
 		return;
 	}
 
-	if (index < 0 || index >= contact_count || index >= 8)
+	if (index < 0 || index >= display_count)
 	{
 		std::cout << "Invalid index." << std::endl;
 		return;

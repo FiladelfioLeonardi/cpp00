@@ -21,8 +21,6 @@
 class Contact
 {
 	public:
-		// Contact();
-		// ~Contact();
 		int add_contact(Contact *contact, std::string input);
 		int set_first_name(std::string first_name);
 		int set_last_name(std::string last_name);

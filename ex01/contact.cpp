@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fileonar <fileonar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fefo <fefo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:00:32 by fefo              #+#    #+#             */
-/*   Updated: 2025/07/21 12:52:40 by fileonar         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:59:40 by fefo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,27 +107,3 @@ int Contact::get_phonebook_size() const
 	return phonebook_size;
 }
 
-#include "phonebook.hpp"
-
-int main()
-	{
-	Phonebook phonebook;
-	std::string input;
-
-	while (true)
-	{
-		std::cout << "Commands: \"ADD, SEARCH, EXIT\"" << std::endl;
-		std::cout << "Enter command: ";
-		getline(std::cin, input);
-
-		if (input == "ADD")
-			phonebook.add_contact();
-		else if (input == "SEARCH")
-			phonebook.search_contacts();
-		else if (input == "EXIT")
-			break;
-		else
-			std::cout << "Invalid command. Try again." << std::endl;
-	}
-	return 0;
-	}
